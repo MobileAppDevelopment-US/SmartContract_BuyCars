@@ -22,6 +22,7 @@ contract BuyCars {
     uint256 public UserID;
     uint256 public CarID;
     uint256 public OrderID;
+    uint256 public ServiceOrderID;
 
     struct car {
         uint256 price;
@@ -95,6 +96,13 @@ contract BuyCars {
         IERC20 _bonusToken = IERC20(bonusTokenAddress);
         _bonusToken.mint(_user_address, _tokens * 10**18);
         emit createOrderEvent(_tokens);
+    }
+
+    function createServiceOrder(address _address, uint _price) public onlyOwner {
+        ServiceOrderID += 1;
+        ServiceOrders[ServiceOrderID].userAddress = _address;
+        ServiceOrders[ServiceOrderID].price = _price;
+        ServiceOrders[ServiceOrderID].date = block.timestamp;
     }
 
 }
