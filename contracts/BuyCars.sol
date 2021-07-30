@@ -6,6 +6,7 @@ import "./IERC20.sol";
 contract BuyCars {
     address public owner;
     address public bonusTokenAddress;
+    address public accounter;
 
     event createOrderEvent(uint256 _tokens);
 
@@ -62,6 +63,10 @@ contract BuyCars {
         bonusTokenAddress = _address;
     }
 
+    function addAccounter(address _address) public onlyOwner {
+        accounter = _address;
+    }
+
     function addUser(string memory _name, address _userAddress)
         public
         onlyOwner
@@ -103,6 +108,21 @@ contract BuyCars {
         ServiceOrders[ServiceOrderID].userAddress = _address;
         ServiceOrders[ServiceOrderID].price = _price;
         ServiceOrders[ServiceOrderID].date = block.timestamp;
+    }
+
+    function checkUserTokens(uint256 _order_id, uint256 _user_id)
+        public
+        onlyOwner
+    {}
+
+    function payByTokens(uint _serviceOrderID) public {
+        uint _serviceAmount = ServiceOrders[_serviceOrderID].price;
+        require(Users[msg.sender].tokens >= _serviceAmount, "Not enought tokens"); 
+
+        IERC20 _bon_token = IERC20(bonusTokenAddress); 
+        _bon_token.transferFrom(msg.sender, accounter, _serviceAmount * 10**18); 
+
+        Users[msg.sender].tokens -= _serviceAmount; 
     }
 
 }
