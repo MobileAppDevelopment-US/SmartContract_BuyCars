@@ -126,5 +126,22 @@ contract("BuyCars", accounts => {
         await truffleAssert.reverts(buyCars.payByTokens(2, { from: accounts[5] }))
     })
 
+    //NFT
+
+    it("Check deploy collection TesseraNFT", async () => {
+        const tesseraNft = await TesseraNFT.deployed()
+        const nameNFT = await tesseraNft.name()
+        const symbol = await tesseraNft.symbol()
+        assert.equal(nameNFT, "Tessera", "Not correct collection name")
+        assert.equal(symbol, "TES")
+    })
+
+    it("Check create token mint add tokenURI", async () => {
+        const tesseraNft = await TesseraNFT.deployed()
+        await tesseraNft.createNFT("https://https://github.com/Serik-IOS/SmartContract_BuyCars.git")
+        const tokenURI = await tesseraNft.tokenURI(1) 
+        assert.equal(tokenURI, "https://https://github.com/Serik-IOS/SmartContract_BuyCars.git", "notCorrectURI")
+    })
+
 })
 
