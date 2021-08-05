@@ -18682,10 +18682,16 @@
       "links": {},
       "address": "0x710d64CfbD040aa60C757b12016086e92887671E",
       "transactionHash": "0xd2033e52d385d70e988500965104e36d87cef06c7bec9f702ba2898a4475bbf7"
+    },
+    "1626521064749": {
+      "events": {},
+      "links": {},
+      "address": "0x774f95E5ed7E8503f70b7c6D882c0D3A3E5bDAeD",
+      "transactionHash": "0x81df561278045bb014fb81ebb425708fa1d88ee177248415ba637d4e58523f56"
     }
   },
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-07-17T11:06:10.654Z",
+  "updatedAt": "2021-07-18T10:12:46.706Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

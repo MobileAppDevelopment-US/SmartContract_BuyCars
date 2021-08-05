@@ -1,4 +1,3 @@
-// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 import "./IERC20.sol";
@@ -31,7 +30,11 @@ import "./Context.sol";
  */
 contract ERC20 is Context, IERC20, IERC20Metadata {
     mapping(address => uint256) private _balances;
+    
+    
+
     mapping(address => mapping(address => uint256)) private _allowances;
+    
     mapping(address=> bool) public Minters;
 
     uint256 private _totalSupply;
@@ -69,12 +72,12 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         Minters[_address] = true;
     }
     
-    function mint(address _address, uint _amount) public virtual override onlyMinter returns(bool){
+    function mint(address _address, uint _amount) public override onlyMinter returns(bool){
         _mint(_address, _amount);
         return true;
     }
 
-    function burn(address _address, uint _amount) public virtual override onlyMinter returns(bool) {
+    function burn(address _address, uint _amount) public override onlyMinter returns(bool) {
          _burn(_address, _amount);
          return true;
     }

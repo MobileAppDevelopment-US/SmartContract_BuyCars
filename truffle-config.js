@@ -34,7 +34,7 @@ module.exports = {
    *
    * $ truffle test --network <network-name>
    */
-
+  contracts_build_directory: "../frontend/src/contracts",
   networks: {
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
@@ -52,22 +52,22 @@ module.exports = {
       host: "127.0.0.1",     // Localhost (default: none)
       port: 8545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
-     },
+     }//,
     // truffle develop 
-    develop: { 
-      //host: "127.0.0.1", // default host мы можем изменять
-      //port: 9545,        // default port мы можем изменять
-      network_id: 20,
-      accounts: 5,
-      defaultEtherBalance: 500,
-      blockTime: 3
-    },
-    ropsten: {
-      provider: function() {
-        return new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/YOUR-PROJECT-ID");
-      },
-      network_id: '3',
-    },
+    // develop: { // добавляем параметры
+    //   //host: "127.0.0.1", // default host мы можем изменять
+    //   //port: 9545,        // default port мы можем изменять
+    //   network_id: 20,
+    //   accounts: 5,
+    //   defaultEtherBalance: 500,
+    //   blockTime: 3
+    // },
+    // ropsten: {
+    //   provider: function() {
+    //     return new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/YOUR-PROJECT-ID");
+    //   },
+    //   network_id: '3',
+    // },
     // test: {
     //   provider: function() {
     //     return new HDWalletProvider(mnemonic, "http://127.0.0.1:8545/");
@@ -109,7 +109,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-       version: "^0.8.6",    // Fetch exact version from solc-bin (default: truffle's version)
+       version: "0.8.5",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       //  optimizer: {

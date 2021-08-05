@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 contract TesseraNFT is ERC721URIStorage { 
 
     uint public tokenIDCounter; 
-    constructor() ERC721 ("Tessera", "TES") {
+    constructor() ERC721 ("Tessera", "TES") { 
         tokenIDCounter = 1;
     }
 
